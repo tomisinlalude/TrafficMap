@@ -16,7 +16,22 @@ export default class Map extends Component {
     }
 
     createFeatureCollection(data) {
-
+      let features = [];
+      data.forEach(point => {
+          features.push({
+             "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    parseFloat(point.location.longitude),
+                    parseFloat(point.location.latitude)
+                ]
+            },
+            "properties": {
+                "description": point.description,
+            }
+          })
+      }) 
     }
 
     componentDidMount() {
