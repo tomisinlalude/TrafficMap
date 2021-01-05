@@ -21,6 +21,7 @@ export default class Map extends Component {
         if (!data) {
             fetch(api_url, {method: 'GET' })
             .then(res => res.json())
+            .then(res => this.createFeatureCollection(res))
             .then(res => console.log(res))
         }
     }
