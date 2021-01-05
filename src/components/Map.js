@@ -15,6 +15,10 @@ export default class Map extends Component {
         }
     }
 
+    createFeatureCollection(data) {
+
+    }
+
     componentDidMount() {
         const {data, api_url} = this.state;
 
