@@ -29,6 +29,9 @@ export default class Map extends Component {
             },
             "properties": {
                 "description": point.description,
+                "details": point.details,
+                "duration": point.duration,
+                "impact": point.impact
             }
           })
       }) 
@@ -55,6 +58,21 @@ export default class Map extends Component {
 
         this.setState({ map });
     }
+
+    map.on('load', () => {
+        map.addLayer({
+            "id": "points",
+            "type": "circle",
+            "source": {
+                "type": "geojson",
+                "data": this.state.data
+            },
+            "paint": {
+                "circle-radius": 5,
+                "circle-color": "#3DF5AE"
+            }
+        })
+    })
 
     render() {
         const { data, map } = this.state;
