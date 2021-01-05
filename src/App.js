@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
 import './App.css';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem
+} from 'reactstrap'; 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false,
+    }
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              1,000 Traffic Incidents
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+      </div>
+    )
+  }
 }
 
 export default App;
